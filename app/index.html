@@ -59,13 +59,13 @@
           </div>
         </div>
         <ul class="nav">
-          <li class="nav-item active ">
+          <li id="dashboard" class="nav-item active ">
             <a class="nav-link" href="#!/view1">
               <i class="material-icons">dashboard</i>
               <p> Dashboard </p>
             </a>
           </li>
-          <li class="nav-item  ">
+          <li  id="clientes" class="nav-item  ">
             <a class="nav-link" href="#!/view2">
               <i class="material-icons">list_alt</i>
               <p> Clientes </p>
@@ -113,6 +113,10 @@
                 </div>
               </div>
 </body>
+
+
+
+
 <!--   Core JS Files   -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
@@ -122,15 +126,22 @@
 <!-- Angular Material Library -->
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
 
+<!-- Angular Fire-->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular-route/angular-route.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+<!--Angular cloud-->
+<!--<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>-->
+
+
+
 <script src="app.js"></script>
 <script src="view1/view1.js"></script>
 <script src="view2/view2.js"></script>
+<script src="nuevaOrden/nuevaOrden.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -143,11 +154,11 @@
     messagingSenderId: "252247775036"
   };
   firebase.initializeApp(config);
+  var db = firebase.database();
+  var userLogin = firebase.auth().currentUser;
+  //const settings = {/* your settings... */ timestampsInSnapshots: true};
+  //db.settings(settings);
 </script>
-
-
-
-
 
 
 

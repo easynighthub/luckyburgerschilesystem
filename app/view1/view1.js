@@ -9,18 +9,10 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function($scope) {
-  const firestore = firebase.firestore();
-  const settings = {/* your settings... */ timestampsInSnapshots: true};
-  firestore.settings(settings);
+.controller('View1Ctrl', ['$scope',function($scope) {
 
+  $(dashboard).addClass("active");
+  $(clientes).removeClass("active");
 
-
-  firestore.collection("clients").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id);
-       // console.log(`${doc.id} => ${doc.data()}`);
-    });
-});
 
 }]);

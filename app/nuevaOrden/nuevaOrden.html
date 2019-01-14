@@ -1,0 +1,16 @@
+<md-autocomplete
+md-selected-item="selectedItem"
+md-search-text="searchText"
+md-items="item in querySearch(searchText)"
+md-item-text="item.nombre"
+md-min-length="4"
+placeholder="What is your favorite US state?"
+input-aria-label="Favorite State"
+md-autofocus>
+<md-item-template>
+<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.nombre}}</span>
+</md-item-template>
+<md-not-found>
+No states matching "{{searchText}}" were found.
+</md-not-found>
+</md-autocomplete>

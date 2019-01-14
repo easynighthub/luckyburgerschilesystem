@@ -4,8 +4,10 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
+  'firebase',
   'myApp.view1',
   'myApp.view2',
+  'myApp.nuevaOrden',
   'myApp.version'
 
 ]).

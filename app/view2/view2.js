@@ -9,6 +9,27 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$scope','$firebaseArray',function($scope,$firebaseArray) {
+
+  $(dashboard).removeClass("active");
+  $(clientes).addClass("active");
+
+
+
+
+  $scope.clientes = []
+
+  var TraerClientes = firebase.database().ref().child('clients');
+  var TraerClientesER = $firebaseArray(TraerClientes);
+  TraerClientesER.$loaded().then(function () {
+    $scope.clientes = TraerClientesER;
+    console.log($scope.clientes);
+
+    //     document.getElementById('BarraCargando').style.display = 'none';
+});
+
+  console.log(userLogin);
+
+
 
 }]);
