@@ -18,18 +18,20 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
   traerHabitaciones();
 
   function traerHabitaciones() {
-    var buscarHabitaciones = db.ref().child('clients');
-    var buscarHabitacionesER = $firebaseArray(buscarHabitaciones);
-    buscarHabitacionesER.$loaded().then(function () {
-        console.log(buscarHabitacionesER);
-        $scope.habitaciones = buscarHabitacionesER;
+    var buscarClientes = db.ref().child('clients');
+    var buscarClientesER = $firebaseArray(buscarClientes);
+    buscarClientesER.$loaded().then(function () {
+        console.log(buscarClientesER);
+        $scope.clientes = buscarClientesER;
         $scope.simulateQuery = false;
         $scope.isDisabled    = false;
         $scope.repos         = loadAll();
         $scope.querySearch   = querySearch;
         $scope.selectedItemChange = selectedItemChange;
         $scope.searchTextChange   = searchTextChange;
+
         function querySearch (query) {
+            if (!query) return;
             var results = query ? $scope.repos.filter( createFilterFor(query) ) : $scope.repos,
                 deferred;
             if ($scope.simulateQuery) {
@@ -42,11 +44,11 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
         }
 
         function searchTextChange(text) {
-            $log.info('Text changed to ' + text);
+            console.log('Text changed to ' + text);
         }
 
         function selectedItemChange(item) {
-            $log.info('Item changed to ' + JSON.stringify(item));
+            console.log('Item changed to ' + JSON.stringify(item));
             $scope.reserva.habitacionId = item;
 
         }
@@ -55,7 +57,7 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
          * Build `components` list of key/value pairs
          */
         function loadAll() {
-            var repos = $scope.habitaciones;
+            var repos = $scope.clientes;
             return repos.map( function (repo) {
                 repo.value = repo.nombre.toLowerCase();
                 return repo;

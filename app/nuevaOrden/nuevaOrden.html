@@ -1,16 +1,23 @@
+<div class="col-xs-12 col-md-6">
 <md-autocomplete
+ng-disabled="isDisabled"
+md-no-cache="noCache"
 md-selected-item="selectedItem"
+md-search-text-change="searchTextChange(searchText)"
 md-search-text="searchText"
+md-selected-item-change="selectedItemChange(item)"
 md-items="item in querySearch(searchText)"
 md-item-text="item.nombre"
-md-min-length="4"
-placeholder="What is your favorite US state?"
-input-aria-label="Favorite State"
-md-autofocus>
+md-min-length="3"
+placeholder="Ex. Alaska"
+input-aria-labelledby="favoriteStateLabel"
+input-aria-describedby="autocompleteDetailedDescription">
 <md-item-template>
 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.nombre}}</span>
 </md-item-template>
 <md-not-found>
 No states matching "{{searchText}}" were found.
+<a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
 </md-not-found>
 </md-autocomplete>
+</div>
