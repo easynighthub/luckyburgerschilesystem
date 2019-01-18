@@ -1,4 +1,6 @@
-<div class="col-xs-12 col-md-6">
+<div class="row">
+
+<div class="col-xs-12 col-md-6 divMargin ">
 <md-autocomplete
 ng-disabled="isDisabled"
 md-no-cache="noCache"
@@ -7,13 +9,13 @@ md-search-text-change="searchTextChange(searchText)"
 md-search-text="searchText"
 md-selected-item-change="selectedItemChange(item)"
 md-items="item in querySearch(searchText)"
-md-item-text="item.nombre"
-md-min-length="3"
+md-item-text="item.telefono"
+md-min-length="1"
 placeholder="Ex. Alaska"
 input-aria-labelledby="favoriteStateLabel"
 input-aria-describedby="autocompleteDetailedDescription">
 <md-item-template>
-<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.nombre}}</span>
+<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.telefono}} - {{item.nombre}}</span>
 </md-item-template>
 <md-not-found>
 No states matching "{{searchText}}" were found.
@@ -21,3 +23,18 @@ No states matching "{{searchText}}" were found.
 </md-not-found>
 </md-autocomplete>
 </div>
+<div class="col-xs-12 col-md-6 divMargin">
+    <input class="inputButton" ng-model='nombre' >
+</div>
+<div class="col-xs-12 col-md-6 divMargin">
+    <input class="inputButton" ng-model='apellido' >
+</div>
+<div class="col-xs-12 col-md-6 divMargin">
+    <input class="inputButton" ng-model='correo' >
+</div>
+<div class="col-xs-12 col-md-6 divMargin">
+    <input class="inputButton" ng-model='direccion' >
+</div>
+
+</div>
+
