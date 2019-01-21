@@ -1,6 +1,11 @@
 <div class="row">
 
-<div class="col-xs-12 col-md-6 divMargin ">
+    <div class="col-sm-6  col-md-12 divMargin ">
+   <p class="ejemplo" style="float: right">  ejemplo : 56 9 71576339</p>
+    </div>
+
+
+<div id="autoComplete" class="col-sm-6  col-md-6 divMargin ">
 <md-autocomplete
 ng-disabled="isDisabled"
 md-no-cache="noCache"
@@ -11,29 +16,33 @@ md-selected-item-change="selectedItemChange(item)"
 md-items="item in querySearch(searchText)"
 md-item-text="item.telefono"
 md-min-length="1"
-placeholder="Ex. Alaska"
+placeholder="Numero de telefono "
 input-aria-labelledby="favoriteStateLabel"
 input-aria-describedby="autocompleteDetailedDescription">
 <md-item-template>
-<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.telefono}} - {{item.nombre}}</span>
+<span md-highlight-text="searchText" md-highlight-flags="^i">{{item.telefono}} - {{item.nombre}} {{item.apellido}}</span>
 </md-item-template>
-<md-not-found>
-No states matching "{{searchText}}" were found.
-<a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
-</md-not-found>
+<!-- <md-not-found>
+no existe "{{searchText}}"
+<a ng-click="newState(searchText)">Create uno nuevo!</a>
+</md-not-found> -->
 </md-autocomplete>
 </div>
-<div class="col-xs-12 col-md-6 divMargin">
-    <input class="inputButton" ng-model='nombre' >
+<div class="col-xs-6 col-sm-6 col-md-6 divMargin">
+    <input
+    placeholder="Nombre" class="inputButton" ng-model='nombre' >
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 divMargin">
+    <input  placeholder="apellido" class="inputButton" ng-model='apellido' >
 </div>
 <div class="col-xs-12 col-md-6 divMargin">
-    <input class="inputButton" ng-model='apellido' >
+    <input  placeholder="correo" class="inputButton" ng-model='correo' >
 </div>
 <div class="col-xs-12 col-md-6 divMargin">
-    <input class="inputButton" ng-model='correo' >
+    <input  placeholder="direccion" class="inputButton" ng-model='direccion' >
 </div>
-<div class="col-xs-12 col-md-6 divMargin">
-    <input class="inputButton" ng-model='direccion' >
+<div  class="col-xs-3 col-md-6 " >
+        <button ng-click="guardarOrden()" style="float: right" class="btn  btn-primary">crear</button>
 </div>
 
 </div>

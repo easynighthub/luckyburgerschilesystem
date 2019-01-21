@@ -14,6 +14,7 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
         $(dashboard).addClass("active");
         $(clientes).removeClass("active");
 
+
         $scope.pedido = [];
         traerClientes();
 
@@ -29,6 +30,7 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
                 $scope.querySearch = querySearch;
                 $scope.selectedItemChange = selectedItemChange;
                 $scope.searchTextChange = searchTextChange;
+                $scope.newState = newState;
 
                 function querySearch(query) {
                     if (!query) return;
@@ -44,6 +46,14 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
                 }
 
                 function searchTextChange(text) {
+                    console.log (text)
+                    if (text == ''){
+
+                        $scope.nombre = '';
+                        $scope.apellido= '';
+                        $scope.correo= '';
+                        $scope.direccion= '';
+                    }
                     console.log('Text changed to ' + text);
                 }
 
@@ -67,8 +77,8 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
                 function loadAll() {
                     var repos = $scope.clientes;
                     return repos.map(function (repo) {
-                        repo.value = repo.telefono;
-                       // repo.value = repo.telefono.toLowerCase();
+                        repo.value = repo.telefono.toString();
+
                         return repo;
                     });
                 }
@@ -80,13 +90,18 @@ angular.module('myApp.nuevaOrden', ['ngRoute'])
                     console.log(query);
                     console.log("ho");
                     var lowercaseQuery = query;
-                    //  var lowercaseQuery = angular.lowercase(query);
+                     var lowercaseQuery = angular.lowercase(query);
 
                     return function filterFn(item) {
-                        console.log(item);
-                        return (item);
+                 return (item.value.indexOf(lowercaseQuery) === 0);
                     };
 
+                }
+
+                function newState(searchText){
+                    console.log(searchText);
+
+                    $('#md-autocomplete-wrap').removeClass("md-menu-showing");
                 }
 
 
